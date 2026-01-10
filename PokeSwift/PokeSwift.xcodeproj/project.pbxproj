@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		E948CC812F131479006BFEBB /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = E948CC802F131479006BFEBB /* Factory */; };
+		E948CC832F131479006BFEBB /* FactoryKit in Frameworks */ = {isa = PBXBuildFile; productRef = E948CC822F131479006BFEBB /* FactoryKit */; };
+		E948CC852F131479006BFEBB /* FactoryTesting in Frameworks */ = {isa = PBXBuildFile; productRef = E948CC842F131479006BFEBB /* FactoryTesting */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		E948CBE92F1307DD006BFEBB /* PokeSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +29,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E948CC832F131479006BFEBB /* FactoryKit in Frameworks */,
+				E948CC852F131479006BFEBB /* FactoryTesting in Frameworks */,
+				E948CC812F131479006BFEBB /* Factory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +74,9 @@
 			);
 			name = PokeSwift;
 			packageProductDependencies = (
+				E948CC802F131479006BFEBB /* Factory */,
+				E948CC822F131479006BFEBB /* FactoryKit */,
+				E948CC842F131479006BFEBB /* FactoryTesting */,
 			);
 			productName = PokeSwift;
 			productReference = E948CBE92F1307DD006BFEBB /* PokeSwift.app */;
@@ -94,6 +106,9 @@
 			);
 			mainGroup = E948CBE02F1307DD006BFEBB;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E948CC7F2F131479006BFEBB /* XCRemoteSwiftPackageReference "Factory" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E948CBEA2F1307DD006BFEBB /* Products */;
 			projectDirPath = "";
@@ -324,6 +339,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E948CC7F2F131479006BFEBB /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E948CC802F131479006BFEBB /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E948CC7F2F131479006BFEBB /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
+		};
+		E948CC822F131479006BFEBB /* FactoryKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E948CC7F2F131479006BFEBB /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = FactoryKit;
+		};
+		E948CC842F131479006BFEBB /* FactoryTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E948CC7F2F131479006BFEBB /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = FactoryTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E948CBE12F1307DD006BFEBB /* Project object */;
 }
