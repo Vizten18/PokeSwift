@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct PokeSwiftApp: App {
+    let container  = DependecyContainer()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            container.makePokemonListView()
         }
     }
 }
