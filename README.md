@@ -146,10 +146,10 @@ This app uses the free [PokéAPI](https://pokeapi.co/) to fetch Pokémon data.
 ## 📸 Screenshots
 
 ### Pokemon List View
-<img width="1179" height="2556" alt="listview" src="https://github.com/user-attachments/assets/7adf1aab-0bcf-45a0-8ca5-55369d2e4389" />
+<img width="300" height="300" alt="listview" src="https://github.com/user-attachments/assets/7adf1aab-0bcf-45a0-8ca5-55369d2e4389" />
 
 ### Pokemon Detail
-<img width="1179" height="2556" alt="detail" src="https://github.com/user-attachments/assets/3bf2c792-7fad-41d6-9925-dc92a88ecde1" />
+<img width="300" height="300" alt="detail" src="https://github.com/user-attachments/assets/3bf2c792-7fad-41d6-9925-dc92a88ecde1" />
 
 ## 🚀 Getting Started
 
