@@ -10,6 +10,7 @@ import Foundation
 enum PokeEndpoint {
     case list(offset: Int, limit: Int)
     case detail(id: Int)
+    case search(name: String)
 
     func url(config: APIConfig) -> URL? {
         switch self {
@@ -17,6 +18,8 @@ enum PokeEndpoint {
             return URL(string:"\(config.baseUrl)/pokemon?offset=\(offset)&limit=\(limit)")
         case .detail(let id):
             return URL(string: "\(config.baseUrl)/pokemon/\(id)")
+        case .search(let name):
+            return URL(string: "\(config.baseUrl)/pokemon/\(name)")
         }
     }
 }

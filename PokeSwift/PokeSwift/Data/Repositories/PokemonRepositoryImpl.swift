@@ -8,6 +8,7 @@
 import Foundation
 
 final class PokemonRepositoryImpl: PokemonRepository {
+
     private let config: APIConfig
 
     init(config: APIConfig) {
@@ -29,7 +30,8 @@ final class PokemonRepositoryImpl: PokemonRepository {
     }
 
     func getPokemonDetail(id: Int) async throws -> Pokemon {
-        guard let url = PokeEndpoint.detail(id: id).url(config: config) else {
+        guard let url = PokeEndpoint.detail(id: id).url(config: config)
+        else {
             throw URLError(.badURL)
         }
 
@@ -38,6 +40,18 @@ final class PokemonRepositoryImpl: PokemonRepository {
 
         return dto.toEntity()
 
+    }
+
+    func searchPokemonByName(name: String) async throws -> Pokemon {
+        guard let url = PokeEndpoint.search(name: name).url(config: config)
+        else {
+            throw URLError(.badURL)
+        }
+
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let dto = try JSONDecoder().decode(PokemonDetailDTO.self, from: data)
+
+        return dto.toEntity()
     }
 
 }

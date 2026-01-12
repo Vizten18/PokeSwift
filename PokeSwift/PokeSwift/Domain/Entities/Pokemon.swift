@@ -13,3 +13,9 @@ struct Pokemon: Identifiable {
     let imageUrl: URL?
     
 }
+
+extension Pokemon {
+    static func empty() -> Pokemon {
+        return Pokemon(id: 0, name: "", imageUrl: nil)
+    }
+}
