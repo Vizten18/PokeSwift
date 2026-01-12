@@ -7,11 +7,15 @@ A SwiftUI-based Pokémon application demonstrating **Clean Architecture** and **
 ## 📱 Features
 
 - Browse a paginated list of Pokémon
+- **Search Pokémon by name** with debounced real-time search
 - View detailed information about each Pokémon
 - Infinite scrolling with pagination
 - Pull-to-refresh functionality
+- **Skeleton loading animations** for better UX
+- **Reusable UI components** (SearchBar, PokemonRow)
 - Async/await networking
 - Dependency injection pattern
+- **Combine framework** for reactive search
 
 ## 🏗️ Architecture
 
@@ -53,8 +57,12 @@ PokeSwift/
 │   └── DependecyContainer.swift     # Dependency injection container
 │
 ├── Core/
-│   └── Config/
-│       └── APIConfig.swift          # API configuration protocol
+│   ├── Config/
+│   │   └── APIConfig.swift          # API configuration protocol
+│   └── Extensions/
+│       ├── View+Skeleton.swift      # Skeleton loading animation modifier
+│       ├── View+InputTextField.swift # TextField styling extension
+│       └── View+InfinityFrame.swift  # Frame utility extension
 │
 ├── Domain/                          # Business Logic Layer
 │   ├── Entities/
@@ -74,10 +82,13 @@ PokeSwift/
 │       └── PokemonRepositoryImpl.swift  # Repository implementation
 │
 ├── Presentation/                    # UI Layer (MVVM)
+│   ├── Components/                  # Reusable UI Components
+│   │   ├── SearchBar.swift          # Custom search bar component
+│   │   └── PokemonRow.swift         # Pokemon list item component
 │   └── Modules/
 │       ├── PokemonList/
 │       │   ├── PokemonListView.swift      # SwiftUI View
-│       │   └── PokemonListViewModel.swift # ViewModel
+│       │   └── PokemonListViewModel.swift # ViewModel with search
 │       └── PokemonDetail/
 │           ├── PokemonDetailView.swift
 │           └── PokemonDetailViewModel.swift
@@ -101,11 +112,13 @@ PokeSwift/
 - **SwiftUI** - Modern declarative UI framework
 - **Async/Await** - Modern concurrency in Swift
 - **URLSession** - Native networking
-- **Combine** - Reactive programming with `@Published` properties
+- **Combine** - Reactive programming with `@Published` properties and debounced search
 - **Protocol-Oriented Programming** - Abstractions for testability
 - **Dependency Injection** - Via DependencyContainer
 - **Clean Architecture** - Separation of layers
 - **MVVM Pattern** - Presentation layer architecture
+- **View Extensions** - Reusable modifiers for styling and animations
+- **Component-Based Architecture** - Modular and reusable UI components
 
 ## 🎯 Key Design Patterns
 
@@ -127,6 +140,7 @@ Abstracts data sources behind a protocol, making it easy to swap implementations
 protocol PokemonRepository {
     func fetchPokemonList(offset: Int, limit: Int) async throws -> PokemonList
     func getPokemonDetail(id: Int) async throws -> Pokemon
+    func searchPokemonByName(name: String) async throws -> Pokemon
 }
 ```
 
@@ -138,6 +152,32 @@ func toEntity() -> Pokemon {
     return Pokemon(id: id ?? 0, name: name, imageUrl: imageUrl)
 }
 ```
+
+### 4. **Debounced Search with Combine**
+Search functionality uses Combine to debounce user input and prevent excessive API calls:
+
+```swift
+private func setupSearch() {
+    $searchText
+        .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
+        .removeDuplicates()
+        .sink { [weak self] text in
+            Task { await self?.searchPokemon(query: text) }
+        }
+        .store(in: &cancellables)
+}
+```
+
+### 5. **Reusable UI Components**
+Custom components for better code organization and reusability:
+- **SearchBar**: Custom search input with clear button
+- **PokemonRow**: Consistent list item design across the app
+
+### 6. **View Extensions & Modifiers**
+Utility extensions for cleaner SwiftUI code:
+- **`.skeleton(if:)`**: Animated loading placeholder
+- **`.inputTextField()`**: Consistent text field styling
+- **`.infinityFrame()`**: Quick max width/height frames
 
 ## 🌐 API
 
@@ -170,6 +210,12 @@ This project demonstrates:
 - ✅ Pagination and infinite scrolling
 - ✅ Navigation with NavigationStack
 - ✅ Error handling in async contexts
+- ✅ **Combine framework for reactive programming**
+- ✅ **Debounced search implementation**
+- ✅ **Custom ViewModifiers and Extensions**
+- ✅ **Skeleton loading states**
+- ✅ **Component-based UI architecture**
+- ✅ **LazyVStack for performance optimization**
 
 ## 🤝 Contributing
 
