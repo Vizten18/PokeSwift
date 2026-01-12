@@ -186,7 +186,10 @@ This app uses the free [PokéAPI](https://pokeapi.co/) to fetch Pokémon data.
 ## 📸 Screenshots
 
 ### Pokemon List View
-<img width="300" height="1000" alt="listview" src="https://github.com/user-attachments/assets/7adf1aab-0bcf-45a0-8ca5-55369d2e4389" />
+<img width="300" height="1000" alt="Simulator Screenshot - iPhone 16 Pro - 2026-01-12 at 18 28 20" src="https://github.com/user-attachments/assets/d831df6e-0be4-4ca4-8376-9c55d3f31e16" />
+
+### Pokemon List View with Search
+<img width="300" height="1000" alt="Simulator Screenshot - iPhone 16 Pro - 2026-01-12 at 18 28 33" src="https://github.com/user-attachments/assets/95bfe246-d774-4045-9113-b665b62b8aee" />
 
 ### Pokemon Detail
 <img width="300" height="1000" alt="detail" src="https://github.com/user-attachments/assets/3bf2c792-7fad-41d6-9925-dc92a88ecde1" />
